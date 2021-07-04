@@ -11,6 +11,10 @@ const noteSchema = new mongoose.Schema({
         type:String,
         requires:true,
         maxlength:10000
+    },
+    user_id : {
+        type : String,
+        required : true
     }
 });
 

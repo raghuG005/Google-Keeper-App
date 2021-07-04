@@ -9,18 +9,21 @@ const {createNote,
     updateNote
 } = require("../Controllers/notes");
 
+//MIDDLEWARES
+const {isAuthenticate} = require('../Middlewares/authenticate')
+
 
 //CREATE
-router.post("/note",createNote);
+router.post("/note",isAuthenticate,createNote);
 
 //READ
 
-router.post("/allnotes",getAllnote);
+router.post("/allnotes",isAuthenticate,getAllnote);
 
 //UPDATE
-router.post("/updatenote/:id",updateNote);
+router.post("/updatenote/:id",isAuthenticate,updateNote);
 
 //DELETE
-router.delete("/removenote/:id",removeNote);
+router.delete("/removenote/:id",isAuthenticate,removeNote);
 
 module.exports = router

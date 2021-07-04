@@ -25,10 +25,13 @@ app.use(cors())
 
 
 //ROUTE PACKAGES
+
+const AuthRoute = require('./Routes/auth')
 const notesRoutes = require('./Routes/notespath');
 
 
 //Routes
+app.use('/',AuthRoute)
 app.use('/api',notesRoutes) 
 
 
