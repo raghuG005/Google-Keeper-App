@@ -38,10 +38,9 @@ exports.signIn = (req,res) => {
             
             else if (result) {
 
-                let token = jwt.sign({name : user.name},process.env.SECRET)
+                let token = jwt.sign({id : user._id ,name : user.name},process.env.SECRET)
                 return res.status(200).json({
                     username : user.username,
-                    id : user._id,
                     message : "LogIn Successfully",
                     token
                 });

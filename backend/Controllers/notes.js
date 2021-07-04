@@ -7,12 +7,12 @@ const Note = require('../Model/note');
 //CreateNote
 exports.createNote = (req,res)=>{
 
-    
+    console.log(req.user.id)
     const note = new Note({
 
         title :req.body.title ,
         description: req.body.description,
-        user_id : req.body.user_Id
+        user_id : req.user.id
     });
 
     note.save((error,note)=>{
@@ -23,14 +23,14 @@ exports.createNote = (req,res)=>{
         }
         return res.status(200).json({
             message : "Added Successfully",
-            id : user._id
+            id : req.user.id
         });
     })
 }
 
 //GetAllNotesfromDB
 exports.getAllnote = (req,res)=>{
-    Note.find({user_id:req.body.id},(error,datas)=>{
+    Note.find({user_id:req.user.id},(error,datas)=>{
         if(error){
             return res.status(403).json({
                 error: "Error while get a data"

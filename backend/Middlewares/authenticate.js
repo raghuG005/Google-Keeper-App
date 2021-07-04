@@ -9,6 +9,8 @@ exports.isAuthenticate = (req,res,next) => {
         const token = req.headers.authorization.split(' ')[2]
         
         const decode = jwt.verify(token,process.env.SECRET)
+        
+        
 
         req.user = decode 
         next()
